@@ -14,7 +14,10 @@ UNITY_HEADER = (
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('filenames', nargs='*')
+    parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args(argv)
+    
+    verbose: bool = args.verbose
 
     yaml = YAML()
     yaml.preserve_quotes = True
@@ -56,8 +59,8 @@ def main(argv: Sequence[str] | None = None) -> int:
                 retval = 1
 
         except Exception as e:
-            print(f"Error processing {filename}: {e}")
-            continue
+            if verbose:
+                print(f"Error processing {filename}: {e}")
 
     return retval
 

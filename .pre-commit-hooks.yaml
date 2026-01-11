@@ -3,4 +3,4 @@
   description: Sets the current value of .asset files that inherit GameVariable to their default values.
   entry: set-var-defaults
   language: python
-  stages: [pre-commit, pre-merge-commit, manual]
+  stages: [pre-commit, manual]
