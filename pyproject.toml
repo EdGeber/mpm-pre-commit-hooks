@@ -14,3 +14,10 @@ Repository = "https://github.com/EdGeber/mpm-pre-commit-hooks"
 
 [project.scripts]
 set-var-defaults = "hooks.set_var_defaults:main"
+
+[tool.setuptools.packages.find]
+include = ["hooks*"]  # Replace "hooks" with the actual name of your package folder
+exclude = ["testing*", "tests*"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["hooks"]
