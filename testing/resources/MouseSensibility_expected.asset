@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6947db79995bc0a43b919c1224d0bbbd, type: 3}
+  m_Name: MouseSensibility
+  m_EditorClassIdentifier:
+  description: Value of the mouse sensitivity.
+  displayName: '-'
+  isReadonly: 0
+  defaultValue: 1
+  currentValue: 1
+  newValue:
+  raiseIfEqual: 0
+  UUIDFolderPath: Assets/MPM/UUIDs/
+  UUIDObject: {fileID: 11400000, guid: b80d1294723fb3d42b2061efe26e152e, type: 2}

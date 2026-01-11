@@ -1,0 +1,16 @@
+[project]
+name = "mpm-pre-commit-hooks"
+version = "0.1.0"
+description = "Pre-commit hooks of the Master-PM© Unity project."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pytest>=9.0.2",
+    "ruamel-yaml>=0.19.1",
+]
+
+[project.urls]
+Repository = "https://github.com/EdGeber/mpm-pre-commit-hooks"
+
+[project.scripts]
+set-var-defaults = "hooks.set_var_defaults:main"

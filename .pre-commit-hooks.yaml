@@ -1,0 +1,6 @@
+- id: set_var_defaults
+  name: Set Default Values of Game Variables
+  description: Sets the current value of .asset files that inherit GameVariable to their default values.
+  entry: set_var_defaults
+  language: python
+  stages: [pre-commit, pre-merge-commit, manual]
