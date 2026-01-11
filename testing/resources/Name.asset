@@ -20,7 +20,7 @@ MonoBehaviour:
   isReadonly: 0
   defaultValue: Trainee
   currentValue: Trainee
-  newValue: 
+  newValue: Trainee
   raiseIfEqual: 0
   UUIDFolderPath: Assets/MPM/UUIDs/
   UUIDObject: {fileID: 0}

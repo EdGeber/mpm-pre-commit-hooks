@@ -37,14 +37,15 @@ def main(argv: Sequence[str] | None = None) -> int:
                 if not container or not all(k in container for k in ('isReadonly', 'defaultValue', 'currentValue', 'newValue')):
                     continue
                 
-                if container['newValue'] != None:
-                    container['newValue'] = None
+                d_val = container['defaultValue']
+                
+                if container['newValue'] != None and str(container['newValue']) != d_val:
+                    container['newValue'] = d_val
                     modified = True
                 
                 if str(container['isReadonly']).strip() == "1":
                     continue
                 
-                d_val = container['defaultValue']
                 if container['currentValue'] == d_val:
                     continue
                 container['currentValue'] = d_val

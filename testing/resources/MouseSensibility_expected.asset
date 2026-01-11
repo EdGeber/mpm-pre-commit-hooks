@@ -17,7 +17,7 @@ MonoBehaviour:
   isReadonly: 0
   defaultValue: 1
   currentValue: 1
-  newValue:
+  newValue: 1
   raiseIfEqual: 0
   UUIDFolderPath: Assets/MPM/UUIDs/
   UUIDObject: {fileID: 11400000, guid: b80d1294723fb3d42b2061efe26e152e, type: 2}
