@@ -39,7 +39,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 
                 d_val = container['defaultValue']
                 
-                if container['newValue'] != None and str(container['newValue']) != d_val:
+                if str(container['newValue']) != d_val:
                     container['newValue'] = d_val
                     modified = True
                 
@@ -62,6 +62,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         except Exception as e:
             if verbose:
                 print(f"Error processing {filename}: {e}")
+            return 0
 
     return retval
 
