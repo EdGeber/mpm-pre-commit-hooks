@@ -11,11 +11,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5540be88f1c767468bcc9a51f709bc4, type: 3}
   m_Name: Name
-  m_EditorClassIdentifier: 
-  description: If the player is a subject of a formal study/experiment, this is their
-    real full name. Otherwise, it's a player-chosen value, but it is usually the
-    player's real full name. If not empty, it is used as the player's name in the
-    certificate of conclusion.
+  m_EditorClassIdentifier:
+  description: If the player is a subject of a formal study/experiment, this is 
+    their real full name. Otherwise, it's a player-chosen value, but it is 
+    usually the player's real full name. If not empty, it is used as the 
+    player's name in the certificate of conclusion.
   displayName: '-'
   isReadonly: 0
   defaultValue: Trainee

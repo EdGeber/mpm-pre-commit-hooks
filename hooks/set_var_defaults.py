@@ -24,45 +24,43 @@ def main(argv: Sequence[str] | None = None) -> int:
     yaml.indent(mapping=2, sequence=4, offset=2)
 
     retval = 0
+    
     for filename in args.filenames:
         try:
             with open(filename, 'r', encoding='utf-8') as f:
-                no_header = "".join(f.readlines()[3:])
-                data = list(yaml.load_all(no_header))
+                orig_content_no_header = "".join(f.readlines()[3:])
+                data = list(yaml.load_all(orig_content_no_header))
 
-            modified = False
-            for doc in data:
-                container = doc.get('MonoBehaviour') if isinstance(doc, dict) else None
-                
-                if not container or not all(k in container for k in ('isReadonly', 'defaultValue', 'currentValue', 'newValue')):
-                    continue
-                
-                d_val = container['defaultValue']
-                
-                if str(container['newValue']) != d_val:
-                    container['newValue'] = d_val
-                    modified = True
-                
-                if str(container['isReadonly']).strip() == "1":
-                    continue
-                
-                if container['currentValue'] == d_val:
-                    continue
-                container['currentValue'] = d_val
-                modified = True
+            if len(data) != 1:
+                continue
+            
+            doc = data[0]
+            container = doc.get('MonoBehaviour') if isinstance(doc, dict) else None
+            
+            if not container or not all(k in container for k in ('isReadonly', 'defaultValue', 'currentValue', 'newValue')):
+                continue
+            
+            if str(container['isReadonly']).strip() == "1":
+                continue
 
-            if modified:
-                with open(filename, 'w', encoding='utf-8') as f:
-                    stream = io.StringIO()
-                    yaml.dump(data[0], stream)
-                    content = stream.getvalue()
-                    f.write(UNITY_HEADER + content)
-                retval = 1
+            d_val = container['defaultValue']
+            container['currentValue'] = d_val
+            container['newValue'] = d_val
+            
+            stream = io.StringIO()
+            yaml.dump(data[0], stream)
+            content = stream.getvalue()
+            
+            if content.strip() == orig_content_no_header.strip():
+                continue
+            
+            with open(filename, 'w', encoding='utf-8') as f:
+                f.write(UNITY_HEADER + content)
+            retval |= 1
 
         except Exception as e:
             if verbose:
                 print(f"Error processing {filename}: {e}")
-            return 0
 
     return retval
 
