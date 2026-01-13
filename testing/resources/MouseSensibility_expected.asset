@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6947db79995bc0a43b919c1224d0bbbd, type: 3}
   m_Name: MouseSensibility
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   description: Value of the mouse sensitivity.
   displayName: '-'
   isReadonly: 0

@@ -9,15 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6947db79995bc0a43b919c1224d0bbbd, type: 3}
-  m_Name: MouseSensibility
+  m_Script: {fileID: 11500000, guid: 2987230be20357045a6423fcce80c1c4, type: 3}
+  m_Name: MusicVolume
   m_EditorClassIdentifier: 
-  description: Value of the mouse sensitivity.
+  description: Volume of the music sounds.
   displayName: '-'
   isReadonly: 0
-  defaultValue: 1
-  currentValue: 1
-  newValue: 0
+  defaultValue:
+    volume: 0
+    muted: 0
+  currentValue:
+    volume: 0
+    muted: 0
+  newValue:
+    volume: 0
+    muted: 0
   raiseIfEqual: 0
   UUIDFolderPath: Assets/MPM/UUIDs/
-  UUIDObject: {fileID: 11400000, guid: b80d1294723fb3d42b2061efe26e152e, type: 2}
+  UUIDObject: {fileID: 11400000, guid: b6bf8d3a8cb0bde4fb11db3b91211030, type: 2}

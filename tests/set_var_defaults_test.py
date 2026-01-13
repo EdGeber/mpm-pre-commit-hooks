@@ -1,64 +1,47 @@
+import pytest
 from hooks.set_var_defaults import main
 from testing.util import get_resource_path
 
 
-def test_game_var_not_pass():
-    orig_path = get_resource_path('MouseSensibility.asset')
-    expected_path = get_resource_path('MouseSensibility_expected.asset')
-    with open(orig_path, 'rb') as f:
-        orig_content = f.read()
+@pytest.mark.parametrize(
+    "asset_path, expected_path",
+    [
+        (get_resource_path('ExportedAvatar.asset'), get_resource_path('ExportedAvatar_expected.asset')),
+        (get_resource_path('MouseSensibility.asset'), get_resource_path('MouseSensibility_expected.asset')),
+        (get_resource_path('MusicVolume.asset'), get_resource_path('MusicVolume_expected.asset')),
+    ],
+    ids=["ExportedAvatar", "MouseSensibility", "MusicVolume"]
+)
+def test_not_pass(asset_path: str, expected_path: str):
+    with open(asset_path, 'rb') as f:
+        orig_content_bytes = f.read()
     try:
-        ret = main([orig_path])
+        ret = main([asset_path])
         assert ret == 1
-        with open(orig_path, 'r') as f:
-            changed_content = f.read()
-        with open(expected_path, 'r') as f:
-            expected_content = f.read()
-        assert changed_content.strip() == expected_content.strip()
+        with open(asset_path, 'rb') as f:
+            changed_content_bytes = f.read()
+        with open(expected_path, 'rb') as f:
+            expected_content_bytes = f.read()
+        assert changed_content_bytes == expected_content_bytes
     finally:
-        with open(orig_path, 'wb') as f:
-            f.write(orig_content)
+        with open(asset_path, 'wb') as f:
+            f.write(orig_content_bytes)
 
 
-def test_game_var_not_pass_anchor():
-    orig_path = get_resource_path('ExportedAvatar.asset')
-    expected_path = get_resource_path('ExportedAvatar_expected.asset')
-    with open(orig_path, 'rb') as f:
-        orig_content = f.read()
+@pytest.mark.parametrize(
+    "asset_path",
+    [get_resource_path('Name.asset'), get_resource_path('TEEUUID.asset')],
+    ids=["Name", "TEEUUID"]
+)
+def test_pass(asset_path: str):
+    with open(asset_path, 'rb') as f:
+        orig_content_bytes = f.read()
     try:
-        ret = main([orig_path])
-        assert ret == 1
-        with open(orig_path, 'r') as f:
-            changed_content = f.read()
-        with open(expected_path, 'r') as f:
-            expected_content = f.read()
-        assert changed_content.strip() == expected_content.strip()
-    finally:
-        with open(orig_path, 'wb') as f:
-            f.write(orig_content)
-
-
-def test_game_var_pass():
-    orig_path = get_resource_path('Name.asset')
-    with open(orig_path, 'r') as f:
-        orig_content = f.read()
-    try:
-        ret = main([orig_path])
-        with open(orig_path, 'r') as f:
-            changed_content = f.read()
-        assert changed_content.strip() == orig_content.strip()
-    finally:
-        with open(orig_path, 'w') as f:
-            f.write(orig_content)
-
-
-def test_not_game_var():
-    orig_path = get_resource_path('TEEUUID.asset')
-    with open(orig_path, 'rb') as f:
-        orig_content = f.read()
-    try:
-        ret = main([orig_path])
+        ret = main([asset_path])
         assert ret == 0
+        with open(asset_path, 'rb') as f:
+            changed_content_bytes = f.read()
+        assert orig_content_bytes == changed_content_bytes
     finally:
-        with open(orig_path, 'wb') as f:
-            f.write(orig_content)
+        with open(asset_path, 'wb') as f:
+            f.write(orig_content_bytes)

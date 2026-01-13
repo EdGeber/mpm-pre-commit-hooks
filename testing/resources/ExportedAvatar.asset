@@ -11,22 +11,22 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17f79c8e150e36946adfa4621fa0e07a, type: 3}
   m_Name: ExportedAvatar
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   description: 'The Player Avatar to be exported.
 
-    Containing the default avatar model index, the features array, and the values
-    of each feature.'
+    Containing the default avatar
+    model index, the features array, and the values of each feature.'
   displayName: '-'
   isReadonly: 0
-  defaultValue: &id001
-    avatar: -1
-    features:
-    featureValues:
+  defaultValue:
+    avatar: 0
+    features: 
+    featureValues: 
   currentValue:
-    avatar: -1
-    features:
-    featureValues:
-  newValue: *id001
+    avatar: 0
+    features: 
+    featureValues: 
+  newValue: *&id001
   raiseIfEqual: 0
   UUIDFolderPath: Assets/MPM/UUIDs/
   UUIDObject: {fileID: 11400000, guid: 240894065e4f2a14eb0cac033a80b2bd, type: 2}
